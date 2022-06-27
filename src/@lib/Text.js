@@ -6,17 +6,17 @@ export default class Text extends React.Component {
             return <span {...this.props}>{this.props.children}</span>
         }else{
             if(this.props.type === "h1") {
-                return <h1 style={this.props.style} {...this.props}>{this.props.children}</h1>
+                return <h1 style={this.props.style} className="text-5xl" {...this.props}>{this.props.children}</h1>
             }else if(this.props.type === "h2") {
-                return <h2 style={this.props.style} {...this.props}>{this.props.children}</h2>
+                return <h2 style={this.props.style} className="text-4xl" {...this.props}>{this.props.children}</h2>
             }else if(this.props.type === "h3") {
-                return <h3 style={this.props.style} {...this.props}>{this.props.children}</h3>
+                return <h3 style={this.props.style} className="text-3xl" {...this.props}>{this.props.children}</h3>
             }else if(this.props.type === "h4") {
-                return <h4 style={this.props.style} {...this.props}>{this.props.children}</h4>
+                return <h4 style={this.props.style} className="text-2xl" {...this.props}>{this.props.children}</h4>
             }else if(this.props.type === "h5") {
-                return <h5 style={this.props.style} {...this.props}>{this.props.children}</h5>
+                return <h5 style={this.props.style} className="text-xl" {...this.props}>{this.props.children}</h5>
             }else if(this.props.type === "h6") {
-                return <h6 style={this.props.style} {...this.props}>{this.props.children}</h6>
+                return <h6 style={this.props.style} className="text-lg" {...this.props}>{this.props.children}</h6>
             }
         }
     }

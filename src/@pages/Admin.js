@@ -1,5 +1,4 @@
 import React from "react";
-import { Tab, Table, Tabs } from "react-bootstrap";
 
 let x
 
@@ -38,23 +37,28 @@ export default class Admin extends React.Component {
                         this.setState({pelatihansudahdikerjakan: baru})
                         console.log(newx)
                         load--;
+                        const sizeX = x.length;
+                        if(i == x.length - 1) {
+                            for(let j = 0 ; j < x.length ; j++) {
+                                fetch(`/getquiz${j}`)
+                                    .then((res) => res.text())
+                                    .then((json) => {
+                                        x = JSON.parse(json)
+                                        let newSS = this.state.soalsoal;
+                                        newSS.push(x);
+                                        this.setState({
+                                            soalsoal: newSS,
+                                        })
+                                        if(j == sizeX - 1) {
+                                            this.setState({
+                                                loading: false,
+                                            })
+                                        }
+                                    })
+                            }
+                        }
                     })
                 }
-                setTimeout(() => {
-                    for(let i = 0 ; i < x.length ; i++) {
-                        fetch(`/getquiz${i}`)
-                            .then((res) => res.text())
-                            .then((json) => {
-                                x = JSON.parse(json)
-                                let newSS = this.state.soalsoal;
-                                newSS.push(x);
-                                this.setState({
-                                    soalsoal: newSS,
-                                })
-                            })
-                    }
-                    setTimeout(() => {this.setState({loading: false})}, 5000)
-                }, 5000)
                 
             }else{
                 this.setState({loading: false})
@@ -78,7 +82,7 @@ export default class Admin extends React.Component {
                         </h2>
                         <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div className="accordion-body">
-                                <Table>
+                                <table>
                                     <thead>
                                         <tr>
                                             <th>Nama</th>
@@ -88,13 +92,13 @@ export default class Admin extends React.Component {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{this.state.pelatihans[index].name}</td>
-                                            <td>{this.state.pelatihans[index].pengantar}</td>
-                                            <td><a href={this.state.pelatihans[index].link_streaming} target="_blank">{this.state.pelatihans[index].link_streaming}</a></td>
+                                            <td className="p-3">{this.state.pelatihans[index].name}</td>
+                                            <td className="p-3">{this.state.pelatihans[index].pengantar}</td>
+                                            <td className="p-3"><a href={this.state.pelatihans[index].link_streaming} target="_blank">{this.state.pelatihans[index].link_streaming}</a></td>
                                         </tr>
                                     </tbody>
-                                </Table>
-                                <Tabs defaultActiveKey="soal0" id="uncontrolled-tab-example" className="mb-3">
+                                </table>
+                                <div defaultActiveKey="soal0" id="uncontrolled-tab-example" className="mb-3">
                                 {/* {<Tab eventKey="home" title="Home">
                                     <Sonnet />
                                 </Tab>
@@ -105,13 +109,13 @@ export default class Admin extends React.Component {
                                     <Sonnet />
                                 </Tab>} */}
                                 {this.state.soalsoal[index].map((item, index) =>
-                                    <Tab eventKey={`soal${index}`} title={`Soal ${index + 1}`}>
+                                    <div eventKey={`soal${index}`} title={`Soal ${index + 1}`}>
                                         <h4>{item.pertanyaan}</h4>
                                         <h6>Jawaban: {item.jawaban}</h6>
-                                    </Tab>
+                                    </div>
                                 )}
-                                </Tabs>
-                                <Table>
+                                </div>
+                                <table>
                                     <thead>
                                         <tr>
                                             <th>Email</th>
@@ -126,7 +130,7 @@ export default class Admin extends React.Component {
                                             </tr>
                                         )}
                                     </tbody>
-                                </Table>
+                                </table>
                             </div>
                         </div>
                     </div>

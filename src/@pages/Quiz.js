@@ -97,7 +97,7 @@ export default class Quiz extends React.Component {
                                     {item.pertanyaan}
                                 </CardHeader>
                                 <CardBody>
-                                    <TextInput style={{width: "70%",margin: 0}} onChange={(e) => this.HandleChange(item.jawaban,index,e)} />
+                                    <TextInput style={{width: "100%",margin: 0}} onChange={(e) => this.HandleChange(item.jawaban,index,e)} />
                                 </CardBody>
                                 <TextInput value={item.jawaban} readOnly hidden />
                             </Card>

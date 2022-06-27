@@ -18,3 +18,17 @@
 .tooltip-arrow {
     display: none !important;
 }
+
+.card {
+    border: none !important;
+    outline: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.card .card-body {
+    padding: 20px;
+}
+
+.card .card-header {
+    background-color: white;
+}

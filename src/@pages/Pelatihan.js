@@ -1,29 +1,17 @@
 import React, { useRef } from 'react'
-import {Card} from 'react-bootstrap';
 import AppBar from '../@lib/AppBar';
 import AppBarItem from '../@lib/AppBarItem';
 import AppBarItemBrand from '../@lib/AppBarItemBrand';
 import Home from './Home';
 import root from '../index';
-import CardBody from '../@lib/CardBody';
-import CardHeader from '../@lib/CardHeader';
-import Link from '../@lib/Link'
-import Text from '../@lib/Text';
-import TextInput from '../@lib/TextInput';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import { Button } from 'react-bootstrap';
 import Quiz from './Quiz';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "../main.css"
 import Login from './Login';
 import Header from './Header';
-import {Tooltip} from "react-bootstrap"
-import TooltipText from "../@lib/TooltipText"
-import TooltipBox from "../@lib/TooltipBox"
 import Footer from './Footer';
-import {useEffect} from 'react';
-import { OverlayTrigger } from 'react-bootstrap';
+import Text from '../@lib/Text';
 
 let x
 
@@ -108,24 +96,26 @@ export default class Pelatihan extends React.Component {
                 <>
                     <Header />
                     {this.state.pelatihans ? this.state.pelatihans.map((item,index) =>
-                        <Card style={{ width: '18rem' }} className="m-3">
-                            <Card.Img src={process.env.PUBLIC_URL + `/${item.link_poster}`} variant="top" />
-                            <Card.Body>
-                                <h5>{item.name}</h5>
-                                <h6 style={{fontWeight: "400"}}>{item.pengantar}</h6>
+                        <div style={{ width: '20rem' }} className="m-3 shadow-md h-auto rounded-lg">
+                            <figure>
+                            <img src={process.env.PUBLIC_URL + `/${item.link_poster}`} className="w-full" />
+                            </figure>
+                            <div className='p-4'>
+                                <Text type="h5">{item.name}</Text>
+                                <Text type="h6" style={{fontWeight: "400"}}>{item.pengantar}</Text>
                                 {this.props.loggedin ? (!this.state.pelatihansudahdikerjakan[index] ? <button className='btn btn-primary' onClick={(e) => this.navigateSoal(index,e)}><i className="fa-solid fa-list-check"></i>{"  "}Kerjakan</button> : <><button className='btn btn-primary' onClick={(e) => this.showNilai(index,e)}><i className="fa-solid fa-hundred-points"></i>{"  "}Lihat Nilai</button>{" "}<button className='btn btn-primary disabled' disabled><i className="fa-solid fa-list-check"></i>{"  "}Kerjakan</button></>) :
-                                    <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Anda harus <a href='javascript:' onClick={(e) => {root.render(<Login />)}}>masuk</a> dahulu untuk mengerjakan soal</Tooltip>} placement="right">
-                                        <span className="d-inline-block">
-                                        <Button disabled style={{ pointerEvents: 'none' }}>
+                                        <>
+                                        <a className='border mb-4 rounded-lg border-transparent bg-rose-500 opacity-50 py-2 px-4 text-sm text-white shadow-sm hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 w-auto' disabled style={{ pointerEvents: 'none' }}>
                                             <Locked />{" "}Kerjakan
-                                        </Button>
-                                        </span>
-                                    </OverlayTrigger>
+                                        </a>
+                                        <br />
+                                        </>
                                 }
                                 <br />
-                                <a className='btn btn-outline-danger mt-2' href={item.link_streaming} target="_blank"><i className='fa-brands fa-youtube'></i>&nbsp;&nbsp;Lihat Streaming</a>
-                            </Card.Body>
-                        </Card>
+                                <a className='w-full border rounded-lg border-transparent bg-rose-500 py-2 px-4 text-sm text-white shadow-sm hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2' href={item.link_streaming} target="_blank"><i className='fa-brands fa-youtube'></i>&nbsp;&nbsp;Lihat Streaming</a>
+                                <br />
+                            </div>
+                        </div>
                     ) : <h1>Loading ...</h1>}
                     <Footer />
                 </>

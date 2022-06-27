@@ -2,7 +2,6 @@ import React from 'react'
 import AppBar from '../@lib/AppBar'
 import AppBarItem from '../@lib/AppBarItem'
 import AppBarItemBrand from '../@lib/AppBarItemBrand';
-import { Button } from 'react-bootstrap';
 import Text from '../@lib/Text';
 import root from '../index'
 import Pelatihan from './Pelatihan';
@@ -59,20 +58,21 @@ export default class Home extends React.Component {
                     <Text type="h1" style={{textAlign: "center",marginTop: "100px",marginBottom: "20dp"}}>
                         Selamat datang di <br /> <Text style={{fontFamily: "'Nanum Pen Script'"}}>Yuk Belajar Seru</Text>
                     </Text>
-                    <div style={{display: "flex",justifyContent: "center"}}>
-                    <Button style={{width: "8em",marginRight: "10px"}} onClick={this.Daftar}>
+                    <br />
+                    <div className='flex justify-center top-6'>
+                    <button className='w-full border rounded-lg border-transparent bg-blue-600 py-2 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2' style={{width: "8em",marginRight: "10px"}} onClick={this.Daftar}>
                         Daftar
-                    </Button>
+                    </button>
                     {" "}
-                    <Button style={{width: "8em"}} onClick={this.Masuk}>
+                    <button className='w-full border rounded-lg border-transparent bg-blue-600 py-2 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2' style={{width: "8em"}} onClick={this.Masuk}>
                         Masuk
-                    </Button>
+                    </button>
                     </div><br />
                     </>
                     }
                     <div style={{placeContent: "center",display: "flex"}}>
                         <div style={{width: "50%"}}>
-                            <button className='btn btn-primary w-100' onClick={this.Pelatihan}>Lihat Pelatihan</button>
+                            <button className='w-full border rounded-lg border-transparent bg-blue-600 py-2 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2' onClick={this.Pelatihan}>Lihat Pelatihan</button>
                         </div>
                     </div>
                     <Footer />

@@ -74,14 +74,14 @@ export default class Login extends React.Component {
                 return (
                         <>
                             <Header />
-                            <div className="card m-5 p-3" id="login">
+                            <div className="card m-5 p-3 rounded-lg" id="login">
                                 <Text type="h1" style={{textAlign: "center"}}>MASUK</Text>
                                 <label style={{marginLeft: "10px"}} htmlFor="name">Email</label>
                                 <TextInput type="email" id="name" nama="name" />
                                 <Text style={{marginLeft: "10px"}}>* contoh: email@yukbelajarseru.com</Text><br />
                                 <Text style={{marginLeft: "10px"}}>Password</Text>
                                 <TextInput type="password" id="password"/><br />
-                                <button className="btn btn-primary" style={{marginLeft: "10px"}} onClick={this.checkLogin}>Masuk</button>
+                                <button className='w-full border rounded-full border-transparent bg-blue-500 py-2 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2' style={{marginLeft: "10px"}} onClick={this.checkLogin}>Masuk</button>
                                 <Text style={{marginLeft: "10px"}}>Belum Punya Akun? <Link style={{color: "blue",cursor: "pointer"}} to={<Daftar />}>Daftar</Link> dahulu</Text>
                             </div>
                             <Footer />
