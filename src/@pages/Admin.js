@@ -1,4 +1,5 @@
 import React from "react";
+import Text from "../@lib/Text";
 
 let x
 
@@ -76,29 +77,29 @@ export default class Admin extends React.Component {
                     {this.state.pelatihans.map((item, index) => 
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="panelsStayOpen-headingOne">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            <button className="accordion-button w-full border p-3" onClick={() => {document.querySelector(`[no='${index}']`).classList.toggle("hidden")}} type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                 Pelatihan #{index + 1}
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div id="panelsStayOpen-collapseOne" no={`${index}`} className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div className="accordion-body">
-                                <table>
-                                    <thead>
+                                <table className="w-full">
+                                    <thead className="border">
                                         <tr>
-                                            <th>Nama</th>
-                                            <th>Pengantar</th>
-                                            <th>Link Streaming</th>
+                                            <th className="border p-3">Nama</th>
+                                            <th className="border p-3">Pengantar</th>
+                                            <th className="border p-3">Link Streaming</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td className="p-3">{this.state.pelatihans[index].name}</td>
-                                            <td className="p-3">{this.state.pelatihans[index].pengantar}</td>
-                                            <td className="p-3"><a href={this.state.pelatihans[index].link_streaming} target="_blank">{this.state.pelatihans[index].link_streaming}</a></td>
+                                            <td className="border p-3">{this.state.pelatihans[index].name}</td>
+                                            <td className="border p-3">{this.state.pelatihans[index].pengantar}</td>
+                                            <td className="border p-3"><a href={this.state.pelatihans[index].link_streaming} target="_blank">{this.state.pelatihans[index].link_streaming}</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div defaultActiveKey="soal0" id="uncontrolled-tab-example" className="mb-3">
+                                <br />
                                 {/* {<Tab eventKey="home" title="Home">
                                     <Sonnet />
                                 </Tab>
@@ -108,25 +109,31 @@ export default class Admin extends React.Component {
                                 <Tab eventKey="contact" title="Contact" disabled>
                                     <Sonnet />
                                 </Tab>} */}
+                                <hr />
+                                <br />
                                 {this.state.soalsoal[index].map((item, index) =>
-                                    <div eventKey={`soal${index}`} title={`Soal ${index + 1}`}>
+                                    <>
+                                    <div className="p-3" eventKey={`soal${index}`} title={`Soal ${index + 1}`}>
                                         <h4>{item.pertanyaan}</h4>
                                         <h6>Jawaban: {item.jawaban}</h6>
                                     </div>
+                                    <hr />
+                                    </>
                                 )}
-                                </div>
-                                <table>
+                                <br />
+                                <br />
+                                <table className="w-full">
                                     <thead>
                                         <tr>
-                                            <th>Email</th>
-                                            <th>Nilai/100</th>
+                                            <th className="border p-2">Email</th>
+                                            <th className="border p-2">Nilai/100</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {this.state.pelatihansudahdikerjakan[index].map((item, index) =>
                                             <tr>
-                                                <td>{item.name}</td>
-                                                <td>{item.nilai}</td>
+                                                <td className="border p-2">{item.name}</td>
+                                                <td className="border p-2">{item.nilai}</td>
                                             </tr>
                                         )}
                                     </tbody>

@@ -49,13 +49,13 @@ export default class Home extends React.Component {
                     <Header />
                     {localStorage.getItem("username") ?
                     <>
-                    <Text type="h1" style={{textAlign: "center",marginTop: "100px",marginBottom: "20dp"}}>
+                    <Text type="h1" className="text-5xl mb-2" style={{textAlign: "center",marginTop: "100px",marginBottom: "20dp"}}>
                         Selamat datang <br /> <Text style={{fontFamily: "'Nanum Pen Script'"}}>{localStorage.getItem("nama")}</Text>
                     </Text>
                     </>
                     :
                     <>
-                    <Text type="h1" style={{textAlign: "center",marginTop: "100px",marginBottom: "20dp"}}>
+                    <Text type="h1" className="text-5xl mb-2" style={{textAlign: "center",marginTop: "100px",marginBottom: "20dp"}}>
                         Selamat datang di <br /> <Text style={{fontFamily: "'Nanum Pen Script'"}}>Yuk Belajar Seru</Text>
                     </Text>
                     <br />
@@ -67,12 +67,13 @@ export default class Home extends React.Component {
                     <button className='w-full border rounded-lg border-transparent bg-blue-600 py-2 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2' style={{width: "8em"}} onClick={this.Masuk}>
                         Masuk
                     </button>
-                    </div><br />
+                    </div>
                     </>
                     }
+                    <br />
                     <div style={{placeContent: "center",display: "flex"}}>
                         <div style={{width: "50%"}}>
-                            <button className='w-full border rounded-lg border-transparent bg-blue-600 py-2 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2' onClick={this.Pelatihan}>Lihat Pelatihan</button>
+                            <button className='w-full  border rounded-lg border-transparent bg-blue-600 py-2 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2' onClick={this.Pelatihan}>Lihat Pelatihan</button>
                         </div>
                     </div>
                     <Footer />

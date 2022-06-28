@@ -43,8 +43,9 @@ export default class AfterQuiz extends React.Component {
                             {item[0] == item[1] ?
                                 <TextInput style={{width: "70%", border: "2px solid green"}} disabled readOnly value={item[0]} />:
                                 <>
-                                <TextInput style={{width: "70%", border: "2px solid red"}} disabled readOnly value={item[0]} />
-                                <TextInput style={{width: "70%", border: "2px solid green"}} disabled readOnly value={item[1]} />
+                                <TextInput style={{width: "70%", border: "2px solid red"}} disabled readOnly value={item[1]} />
+                                <br />
+                                <TextInput style={{width: "70%", border: "2px solid green"}} disabled readOnly value={item[0]} />
                                 </>
                             }
                         </CardBody>

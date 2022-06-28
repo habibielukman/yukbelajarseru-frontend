@@ -32,3 +32,7 @@
 .card .card-header {
     background-color: white;
 }
+
+a{
+    cursor: pointer;
+}

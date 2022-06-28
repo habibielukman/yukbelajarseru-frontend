@@ -42,9 +42,9 @@ export default class EditProfile extends React.Component {
     render() {
         return <>
             <Header />
-            <TextInput style={{margin: 10}} type="text" placeholder="Nama" id="namaBaru" defaultValue={localStorage.getItem("nama")} />
-            <TextInput style={{margin: 10}}  type="text" placeholder="Email" id="idBaru" defaultValue={localStorage.getItem("username")} />
-            <button className="btn btn-primary" onClick={(e) => {this.editPost(e,document.getElementById("namaBaru").value,document.getElementById("idBaru").value)}} style={{margin: "10px", width: "95%"}}>Simpan</button>
+            <div className="p-[10px]"><TextInput type="text" placeholder="Nama" id="namaBaru" defaultValue={localStorage.getItem("nama")} /></div>
+            <div className="p-[10px]"><TextInput type="text" placeholder="Email" id="idBaru" defaultValue={localStorage.getItem("username")} /></div>
+            <div className="p-[10px]"><button className="w-full font-semibold border rounded-lg border-transparent bg-blue-600 py-3 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" onClick={(e) => {this.editPost(e,document.getElementById("namaBaru").value,document.getElementById("idBaru").value)}}>Simpan</button></div>
             <Footer />
         </>
     }

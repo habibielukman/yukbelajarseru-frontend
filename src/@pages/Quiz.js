@@ -103,7 +103,7 @@ export default class Quiz extends React.Component {
                             </Card>
                         )
                     }
-                    <button className="btn btn-primary" onClick={this.CheckAns} style={{margin: "10px", width: "95%"}}>Submit</button>
+                    <div className="w-full p-3"><button className="w-full cursor-pointer border rounded-full border-transparent bg-blue-600 py-2 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" onClick={this.CheckAns}>Submit</button></div>
                 </>
             )
         }

@@ -87,7 +87,7 @@ export default class Daftar extends React.Component {
                 return (
                         <>
                             <Header />
-                            <Card id="login"  style={{width: "95%"}}>
+                            <div className="card m-5 p-3 rounded-lg" id="login">
                                 <Text type="h1" style={{textAlign: "center"}}>DAFTAR</Text>
                                 <Text style={{marginLeft: "10px"}}>Nama</Text>
                                 <TextInput type="text" id="name" />
@@ -98,9 +98,9 @@ export default class Daftar extends React.Component {
                                 <Text style={{marginLeft: "10px"}}>Password:</Text>
                                 <TextInput type="password" id="password"/>
                                 <Text style={{marginLeft: "10px"}}>* contoh: rahasia</Text><br />
-                                <Button style={{marginLeft: "10px"}} click={this.checkData}>Daftar</Button>
+                                <button className='w-full border rounded-full border-transparent bg-blue-500 py-2 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2' style={{marginLeft: "10px"}} onClick={this.checkData}>Daftar</button>
                                 <Text style={{marginLeft: "10px"}}>Sudah Punya Akun? <Link style={{color: "blue",cursor: "pointer"}} to={<Login />}>Masuk saja</Link></Text>
-                            </Card>
+                            </div>
                             <Footer />
                         </>
                     )
