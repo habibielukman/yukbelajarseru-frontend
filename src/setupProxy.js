@@ -93,5 +93,21 @@ module.exports = (app) => {
     })
   );
 
+  app.use(
+    '/getquiz',
+    createProxyMiddleware({
+      target: 'http://localhost:4000',
+      changeOrigin: true,
+    })
+  )
+
+  app.use(
+    '/getworks',
+    createProxyMiddleware({
+      target: 'http://localhost:4000',
+      changeOrigin: true,
+    })
+  )
+
 
 };

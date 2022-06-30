@@ -87,7 +87,7 @@ export default class Header extends React.Component {
 
     render() {
         return (<>
-        <header className="fixed w-full">
+        <header className="fixed w-full z-50">
             <nav>
                 <div  className="
                 flex flex-wrap

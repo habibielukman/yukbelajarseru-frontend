@@ -53,7 +53,14 @@ export default class Pelatihan extends React.Component {
                 var newx = [];
                 var load = x.length;
                 for(let i = 0 ; i < x.length ; i++) {
-                    fetch(`/getworks${i}`)
+                    fetch(`/getworks`, {
+                        method: "POST",
+                        headers: {
+                            "Accept": "application/json",
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: `id=${i}`
+                    })
                     .then((res) => res.text())
                     .then((json) => {
                         newx = JSON.parse(json);
@@ -97,7 +104,8 @@ export default class Pelatihan extends React.Component {
                     <Header />
                     {this.state.pelatihans ? this.state.pelatihans.map((item,index) =>
                         <div className='p-3'>
-                        <div className="w-full sm:w-80 shadow-md h-auto rounded-lg overflow-hidden">
+                            {console.log(index)}
+                        <div className="w-full sm:w-96 shadow-md h-auto rounded-lg overflow-hidden">
                             <figure>
                             <img src={process.env.PUBLIC_URL + `/${item.link_poster}`} className="w-full" />
                             </figure>
@@ -105,14 +113,13 @@ export default class Pelatihan extends React.Component {
                                 <Text type="h5" className="text-2xl font-semibold">{item.name}</Text>
                                 <Text type="h6" style={{fontWeight: "400"}}>{item.pengantar}</Text>
                                 <br />
-                                {this.props.loggedin ? (!this.state.pelatihansudahdikerjakan[index] ? <button className='font-semibold border h-4 mb-4 rounded-lg border-transparent bg-[#570DF8] py-3 px-4 text-sm text-white shadow-sm hover:bg-[#570DF8] focus:outline-none focus:ring-2 focus:ring-[#570DF8] focus:ring-offset-2 w-auto' onClick={(e) => this.navigateSoal(index,e)}><i className="fa-solid fa-list-check"></i>{"  "}Kerjakan</button> : <><button className="font-semibold border rounded-lg border-transparent bg-blue-600 py-3 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" onClick={(e) => this.showNilai(index,e)}><i className="fa-solid fa-hundred-points"></i>{"  "}Lihat Nilai</button>{" "}<button className='font-semibold border mb-4 rounded-lg border-transparent bg-[#46494e] opacity-[0.2] py-3 px-4 text-sm text-[#000] shadow-sm  focus:outline-none focus:ring-2 focus:ring-[#570DF8] focus:ring-offset-2 w-auto cursor-not-allowed' disabled><i className="fa-solid fa-list-check"></i>{"  "}Kerjakan</button></>) :
+                                {this.props.loggedin ? (!this.state.pelatihansudahdikerjakan[index] ? <button className='font-semibold border mb-2 rounded-lg border-transparent bg-[#570DF8] py-3 px-4 text-sm text-white shadow-sm hover:bg-[#570DF8] focus:outline-none focus:ring-2 focus:ring-[#570DF8] focus:ring-offset-2 w-auto' onClick={(e) => this.navigateSoal(index,e)}><i className="fa-solid fa-list-check"></i>{"  "}Kerjakan</button> : <><button className="font-semibold border rounded-lg border-transparent bg-blue-600 py-3 px-4 text-sm text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" onClick={(e) => this.showNilai(index,e)}><i className="fa-solid fa-hundred-points"></i>{"  "}Lihat Nilai</button>{" "}<button className='font-semibold border mb-4 rounded-lg border-transparent bg-[#46494e] opacity-[0.2] py-3 px-4 text-sm text-[#000] shadow-sm  focus:outline-none focus:ring-2 focus:ring-[#570DF8] focus:ring-offset-2 w-auto cursor-not-allowed' disabled><i className="fa-solid fa-list-check"></i>{"  "}Kerjakan</button></>) :
                                         <>
-                                        <button className='border block h-4 mb-4 rounded-lg border-transparent bg-[#46494e] opacity-[0.2] py-3 px-4 text-sm font-semibold text-[#000] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#570DF8] focus:ring-offset-2 w-auto' style={{ cursor: "none" }}>
+                                        <button className='border block mb-2 rounded-lg border-transparent bg-[#46494e] opacity-[0.2] py-3 px-4 text-sm font-semibold text-[#000] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#570DF8] focus:ring-offset-2 w-auto' style={{ cursor: "none" }}>
                                             <Locked />{" "}Kerjakan
                                         </button>
                                         </>
                                 }
-                                <br />
                                 <button className='w-auto block border rounded-lg border-transparent bg-rose-500 py-3 px-4 text-sm font-semibold text-white shadow-sm hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2' href={item.link_streaming} target="_blank"><i className='fa-brands fa-youtube'></i>&nbsp;&nbsp;Lihat Streaming</button>
                                 <br />
                             </div>

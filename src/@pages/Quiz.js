@@ -32,7 +32,14 @@ export default class Quiz extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`/getworks${this.props.id}`)
+        fetch(`/getworks`, {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "id=" + this.props.id,
+        })
         .then((res) => res.text())
         .then((json) => {
             var newx = JSON.parse(json);
@@ -42,7 +49,14 @@ export default class Quiz extends React.Component {
                     return;
                 }
             }
-            fetch(`/getquiz${this.props.id}`)
+            fetch(`/getquiz` , {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `id=${this.props.id}`
+            })
             .then((res) => res.text())
             .then((json) => {
                 x = JSON.parse(json)

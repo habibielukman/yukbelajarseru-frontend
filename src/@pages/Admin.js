@@ -29,7 +29,14 @@ export default class Admin extends React.Component {
                 for(let i = 0 ; i < x.length ; i++) {
                     console.log("MASUUUUK")
                     console.log(`/getworks${i}`)
-                    fetch(`/getworks${i}`)
+                    fetch(`/getworks`, {
+                        method: "POST",
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: "id=" + i
+                    })
                     .then((res) => res.text())
                     .then((json) => {
                         newx = JSON.parse(json);
@@ -41,7 +48,14 @@ export default class Admin extends React.Component {
                         const sizeX = x.length;
                         if(i == x.length - 1) {
                             for(let j = 0 ; j < x.length ; j++) {
-                                fetch(`/getquiz${j}`)
+                                fetch(`/getquiz`, {
+                                    method: "POST",
+                                    headers: {
+                                        'Accept': 'application/json, text/plain, */*',
+                                        'Content-Type': 'application/x-www-form-urlencoded'
+                                    },
+                                    body: "id=" + j
+                                })
                                     .then((res) => res.text())
                                     .then((json) => {
                                         x = JSON.parse(json)
@@ -111,7 +125,7 @@ export default class Admin extends React.Component {
                                 </Tab>} */}
                                 <hr />
                                 <br />
-                                {this.state.soalsoal[index].map((item, index) =>
+                                {this.state.soalsoal[index]?.map((item, index) =>
                                     <>
                                     <div className="p-3" eventKey={`soal${index}`} title={`Soal ${index + 1}`}>
                                         <h4>{item.pertanyaan}</h4>
@@ -130,7 +144,8 @@ export default class Admin extends React.Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {this.state.pelatihansudahdikerjakan[index].map((item, index) =>
+                                        {console.log(typeof this.state.pelatihansudahdikerjakan[0])}
+                                        {this.state.pelatihansudahdikerjakan[index]?.map((item) =>
                                             <tr>
                                                 <td className="border p-2">{item.name}</td>
                                                 <td className="border p-2">{item.nilai}</td>
